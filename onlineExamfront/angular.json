@@ -1,9 +1,12 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": false
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "onlineExamfront": {
+    "examfrontend": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +16,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/onlineExamfront",
+            "outputPath": "dist/examfrontend",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -63,18 +66,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "onlineExamfront:build"
+            "browserTarget": "examfrontend:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "onlineExamfront:build:production"
+              "browserTarget": "examfrontend:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "onlineExamfront:build"
+            "browserTarget": "examfrontend:build"
           }
         },
         "test": {
@@ -112,16 +115,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "onlineExamfront:serve"
+            "devServerTarget": "examfrontend:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "onlineExamfront:serve:production"
+              "devServerTarget": "examfrontend:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "onlineExamfront"
+  "defaultProject": "examfrontend"
 }

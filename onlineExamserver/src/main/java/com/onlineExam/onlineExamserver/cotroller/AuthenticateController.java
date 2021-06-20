@@ -1,5 +1,7 @@
 package com.onlineExam.onlineExamserver.cotroller;
 
+import java.security.Principal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -9,6 +11,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.onlineExam.onlineExamserver.config.JwtUtils;
 import com.onlineExam.onlineExamserver.model.JwtRequest;
 import com.onlineExam.onlineExamserver.model.JwtResponse;
+import com.onlineExam.onlineExamserver.model.User;
 import com.onlineExam.onlineExamserver.serviceImpl.UserDetailsServiceImpl;
 
 @RestController
@@ -64,5 +68,13 @@ public class AuthenticateController {
 			// TODO: handle exception
 			throw new Exception("Invalid Creentials"+ e.getMessage());
 		}
+	}
+	
+	//returns the details of current user
+	@GetMapping("/current-user")
+	public User getCurrentUser(Principal principal)
+	{
+		return ((User)this.userDetailsServiceImpl.loadUserByUsername(principal.getName()));
+		
 	}
 }

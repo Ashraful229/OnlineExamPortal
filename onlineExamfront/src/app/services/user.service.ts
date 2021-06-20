@@ -7,10 +7,10 @@ import baseUrl from './helper';
 })
 export class UserService {
 
-  constructor( private http:HttpClient) { }
+  constructor(private http:HttpClient) { }
+
   //add user
-  public addUser(user:any)
-  {
-  return this.http.post(`${baseUrl}/user/`,user)
+  public addUser(user:any){
+    return this.http.post(`${baseUrl}/user/`,user);
   }
 }
