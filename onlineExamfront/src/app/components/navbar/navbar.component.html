@@ -44,9 +44,11 @@
   <button
     *ngIf="isLoggedIn && user"
     mat-button
+    routerLink="/admin/profile"
     class="example-icon favorite-icon mr20"
     aria-label="Example icon-button with heart icon"
   >
     {{ user.username }}
+    <!-- {{ login.getUser().username }} -->
   </button>
 </mat-toolbar>

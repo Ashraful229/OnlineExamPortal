@@ -5,6 +5,7 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.onlineExam.onlineExamserver.helper.UserFoundException;
 import com.onlineExam.onlineExamserver.model.User;
 import com.onlineExam.onlineExamserver.model.UserRole;
 import com.onlineExam.onlineExamserver.repo.RoleRepository;
@@ -21,13 +22,14 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User CreateUser(User user, Set<UserRole> userRoles) throws Exception {
+	
 		
 	User local=	this.userRepository. findByUsername(user.getUsername());
 	
 	if(local!=null)
 	{
 		System.out.println("user is already there");
-		throw new Exception("u ser already present");
+		throw new UserFoundException();
 	}
 	else
 	{
